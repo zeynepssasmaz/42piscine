@@ -1,73 +1,62 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zsasmaz <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/02 22:46:56 by zsasmaz           #+#    #+#             */
+/*   Updated: 2022/03/02 22:47:01 by zsasmaz          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include <stdlib.h>
 
-int	ft_strlen(char *str)
+char	*ft_strjoin(int size, char **strs, char*sep)
 {
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
-char	*ft_strcat(char *dest, char *src)
-{
-	int	i;
-	int	j;
-
-	i = ft_strlen(dest);
-	j = 0;
-	while (src[j])
-	{
-		dest[i] = src[j];
-		i++;
-		j++;
-	}
-	dest[i] = '\0';
-	return (dest);
-}
-
-int	total_length(char **strs, char *sep)
-{
-	int	i;
-	int	total;
-
-	i = 0;
-	total = 0;
-	while (strs[i])
-	{
-		total += ft_strlen(strs[i]);
-		i++;
-	}
-	total += ft_strlen(sep) * (i - 1);
-	return (total);
-}
-
-char	*ft_strjoin(int size, char **strs, char *sep)
-{	
-	char	*str;
-	int		len;
+	char	*s;
 	int		i;
+	int		j;
+	int		c;
 
-	if (!size)
-	{
-		str = 0;
-		return (0);
-	}
-	len = total_length(strs, sep);
-	str = (char *)malloc(sizeof(char) * len + 1);
-	if (!str)
-		return (0);
+	s = malloc(sizeof(strs));
 	i = 0;
-	while (strs[i])
+	c = 0;
+	while (i < size)
 	{
-		ft_strcat(str, strs[i]);
-		if (i < size - 1)
-			ft_strcat(str, sep);
+		j = 0;
+		while (strs[i][j] != '\0')
+		{
+			s[c++] = strs[i][j++];
+		}
+		j = 0;
+		while (sep[j] != '\0' && i != size -1)
+		{
+			s[c++] = sep[j++];
+		}
 		i++;
 	}
-	str[ft_strlen(str)] = '\0';
-	return (str);
+	s[c] = '\0';
+	return (s);
 }
+/*int	main(void)
+{
+	int		index;
+	char	**strs;
+	char	*separator;
+	char	*result;
+	int	size;
+
+	size = 3;
+	strs = (char **)malloc(3 * sizeof(char *));
+	strs[0] = (char *)malloc(sizeof(char) * 5 + 1);
+	strs[1] = (char *)malloc(sizeof(char) * 7 + 1);
+	strs[2] = (char *)malloc(sizeof(char) * 14 + 1);
+	strs[0] = "Hello";
+	strs[1] = "friend,";
+	strs[2] = "you are awesome";
+	separator = " ";
+	result = ft_strjoin(size, strs, separator);
+	printf("%s$\n", result);
+	free(result);
+}*/
