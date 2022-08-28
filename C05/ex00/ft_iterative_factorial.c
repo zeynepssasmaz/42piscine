@@ -1,18 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_iterative_factorial.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zeynepsasmaz <zeynepsasmaz@student.42.f    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/27 19:38:14 by zsasmaz           #+#    #+#             */
+/*   Updated: 2022/08/28 19:16:37 by zeynepsasma      ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include <unistd.h>
 
-int	ft_iterative_factorial(int nb)
+int	ft_iterative_factorial(unsigned int nb)
 {
-	int	result;
+	int	f;
+	int	i;
 
-	result = 1;
-	if (nb < 0)
-		return (0);
-	if (nb == 0 || nb == 1)
-		return (1);
-	while (nb > 0)
+	i = 1;
+	f = 1;
+	while (i <= nb)
 	{
-		result *= nb;
-		nb--;
-	}
-	return (result);
+		f *= i++;
+    }
+	return (f);
 }
+// int main (void)
+// {
+//     printf("%i", ft_iterative_factorial(-5));
+// }
