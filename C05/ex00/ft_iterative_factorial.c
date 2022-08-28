@@ -29,3 +29,4 @@ int	ft_iterative_factorial(unsigned int nb)
 // {
 //     printf("%i", ft_iterative_factorial(-5));
 // }
+
