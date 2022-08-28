@@ -1,27 +1,29 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_program_name.c                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zsasmaz <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/27 20:05:58 by zsasmaz           #+#    #+#             */
+/*   Updated: 2022/02/27 20:06:03 by zsasmaz          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include <unistd.h>
 
-void	ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
-
-void	ft_putstr(char *str)
+int	main(int ac, char **av)
 {
 	int	i;
 
 	i = 0;
-	while (str[i])
+	if (ac > 0)
 	{
-		ft_putchar(str[i]);
-		i++;
+		while (av[0][i] != '\0')
+		{
+			write(1, &av[0][i], 1);
+			i++;
+		}
+		write(1, "\n", 1);
 	}
-}
-
-int	main(int argc, char **argv)
-{
-	if (argc > 0)
-		ft_putstr(argv[0]);
-	ft_putchar('\n');
 	return (0);
 }
