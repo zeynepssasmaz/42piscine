@@ -1,18 +1,22 @@
-
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_iterative_power.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zsasmaz <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/27 19:55:54 by zsasmaz           #+#    #+#             */
+/*   Updated: 2022/02/27 19:56:01 by zsasmaz          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 int	ft_iterative_power(int nb, int power)
 {
-	int	nbr;
+	int	r;
 
-	nbr = nb;
+	r = 1;
 	if (power < 0)
 		return (0);
-	if (power == 0)
-		return (1);
-	while (power > 1)
-	{
-		nbr *= nb;
-		power--;
-	}
-	return (nbr);
+	while (power-- > 0)
+		r *= nb;
+	return (r);
 }
